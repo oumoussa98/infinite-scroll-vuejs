@@ -57,7 +57,7 @@
     </v-app-bar>
 
     <v-content light >
-      
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
