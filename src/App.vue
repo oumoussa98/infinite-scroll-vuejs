@@ -26,7 +26,7 @@
       </div>
 
       <v-spacer>
-        <router-link to="/">
+        <router-link style="text-decoration:none"  to="/">
         <v-btn
         color="black"
         text
@@ -35,7 +35,7 @@
         <span class="mr-2">Home</span>
         </v-btn>
         </router-link>
-        <router-link to="/about">
+        <router-link style="text-decoration:none"  to="/about">
         <v-btn
         color="black"
         text
