@@ -56,7 +56,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-content light >
+    <v-content class="grey lighten-2"  >
       <router-view></router-view>
     </v-content>
   </v-app>
