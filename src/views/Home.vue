@@ -44,19 +44,30 @@
       </v-btn>
     </v-card-actions>
   </v-card>
-  <!-- <infinite-loading @distance='1' @infinite="infiniteHandler"></infinite-loading> -->
-  {{infiniteHandler()}}
     </v-row> 
- 
+    <infinite-loading 
+    style="width:10%;margin:auto" @infinite="infiniteHandler">
+  <div slot="spinner">
+    <v-progress-circular
+      indeterminate
+      color="primary"
+    ></v-progress-circular></div>
+  <div slot="no-more">No more data</div>
+  <div slot="no-results">No data</div></infinite-loading> 
   </v-container>
 </template>
 
+
 <script>
+import InfiniteLoading from 'vue-infinite-loading'
 import axios from 'axios' ;
 
 const api = 'http://localhost:8000/cvs/experiences';
 
 export default {
+   components: {
+    InfiniteLoading,
+  },
   data() {
     return {
       page: 1,
