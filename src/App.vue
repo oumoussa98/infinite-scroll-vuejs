@@ -1,71 +1,26 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="white"
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-light.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer>
-        <router-link style="text-decoration:none"  to="/">
-        <v-btn
-        color="black"
-        text
-        class="ml-4"
-        >
-        <span class="mr-2">Home</span>
-        </v-btn>
-        </router-link>
-        <router-link style="text-decoration:none"  to="/about">
-        <v-btn
-        color="black"
-        text
-        >
-        <span class="mr-2">About</span>
-        </v-btn>
-        </router-link>
-      </v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        color="black"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+    
+    <Header></Header>
+    
     <v-content class="grey lighten-2"  >
       <router-view></router-view>
     </v-content>
+    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
+import Header from './views/partials/header.vue'
+import Footer from './views/partials/footer.vue'
 
 export default {
   name: 'App',
+   
+    components: {
+    Header,
+    Footer,
+  },
 
   data: () => ({
     //

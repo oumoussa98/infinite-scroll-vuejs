@@ -25,7 +25,7 @@
     ></v-img>
 
     <v-card-text>
-      Visit ten places on our planet that are undergoing the biggest changes today.
+        {{todo.presentation}}
     </v-card-text>
 
     <v-card-actions>
@@ -36,8 +36,9 @@
         Read More
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+      <div v-if="like">{{like}}</div>
+      <v-btn icon @click="like++" v-model="like">
+        <v-icon>mdi-thumb-up</v-icon>
       </v-btn>
       <v-btn icon>
         <v-icon>mdi-share-variant</v-icon>
@@ -52,7 +53,7 @@
       indeterminate
       color="primary"
     ></v-progress-circular></div>
-  <div slot="no-more">No more data</div>
+  <div slot="no-more"></div>
   <div slot="no-results">No data</div></infinite-loading> 
   </v-container>
 </template>
@@ -71,6 +72,7 @@ export default {
   data() {
     return {
       page: 1,
+      like: 0 ,
       todos: [],
     };
   },
