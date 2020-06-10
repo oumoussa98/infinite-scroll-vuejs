@@ -1,12 +1,18 @@
 <template>
   <v-container class="home">
     <v-row>
-  <v-card
+  <v-card v-for="todo in todos" :key="todo.id"
     max-width="344"
-    class="mx-auto"
+    class="mx-auto mb-6"
+    raised
   >
     <v-list-item>
-      <v-list-item-avatar color="grey"></v-list-item-avatar>
+      <v-list-item-avatar color="grey">
+       <v-img
+      v-bind:src="'http://localhost:8000/storage/'+todo.photo"
+      height="194"
+       ></v-img>
+        </v-list-item-avatar>
       <v-list-item-content>
         <v-list-item-title class="headline">{{todo.titre}}</v-list-item-title>
         <v-list-item-subtitle>by abdelwahd</v-list-item-subtitle>
@@ -14,7 +20,7 @@
     </v-list-item>
 
     <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+      v-bind:src="'http://localhost:8000/storage/'+todo.photo"
       height="194"
     ></v-img>
 
@@ -25,15 +31,9 @@
     <v-card-actions>
       <v-btn
         text
-        color="deep-purple accent-4"
+        color="blue accent-4"
       >
-        Read
-      </v-btn>
-      <v-btn
-        text
-        color="deep-purple accent-4"
-      >
-        Bookmark
+        Read More
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn icon>
@@ -44,28 +44,41 @@
       </v-btn>
     </v-card-actions>
   </v-card>
-    </v-row>
+  <!-- <infinite-loading @distance='1' @infinite="infiniteHandler"></infinite-loading> -->
+  {{infiniteHandler()}}
+    </v-row> 
+ 
   </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'Home',
+import axios from 'axios' ;
 
-    data: () => ({
-      todos:[],
-    }),
-     methods: {
-                getExperience: function() {
-                    axios.get('http://localhost:8000/cvs/experiences') 
-                    .then(response => {
-                      this.todos = response.data ;
-                    })
-                    .catch(error =>{
-                       return console.log('error:',error);
-                    })
+const api = 'http://localhost:8000/cvs/experiences';
 
-                },
-            },
-  }
+export default {
+  data() {
+    return {
+      page: 1,
+      todos: [],
+    };
+  },
+  methods: {
+    infiniteHandler($state) {
+      axios.get(api, {
+        params: {
+          page: this.page,
+        },
+      }).then(({ data }) => {
+        if (data.data.length) {
+          this.page += 1;
+          this.todos.push(...data.data);
+          $state.loaded();
+        } else {
+          $state.complete();
+        }
+      });
+    },
+  },
+};
 </script>
