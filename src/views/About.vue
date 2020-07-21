@@ -1,19 +1,11 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <v-btn
-    color="pink"
-    dark
-    >Click Me </v-btn>
-    <v-btn class="mx-4"
-    color="pink"
-    >Click Me </v-btn>
-    <v-btn class="mx-4"
-    color="pink"
-    dark
-    >Click Me </v-btn>
-    <v-btn>
-      <v-icon>mdi-settings</v-icon>
-    </v-btn>
+  <div class="aboutus">
+    <h1>This is the about page</h1>
   </div>
 </template>
+<style scoped>
+h1 {
+  margin: auto;
+  padding: 40px 0 0 100px;
+}
+</style>

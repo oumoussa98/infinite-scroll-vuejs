@@ -1,29 +1,29 @@
 <template>
   <v-app>
-    
     <Header></Header>
-    
-    <v-content class="grey lighten-2"  >
+
+    <v-content class="grey lighten-2">
       <router-view></router-view>
     </v-content>
+
     <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-import Header from './views/partials/header.vue'
-import Footer from './views/partials/footer.vue'
+import Header from "./views/partials/header";
+import Footer from "./views/partials/footer";
 
 export default {
-  name: 'App',
-   
-    components: {
+  name: "App",
+
+  components: {
     Header,
-    Footer,
+    Footer
   },
 
   data: () => ({
     //
-  }),
+  })
 };
 </script>
